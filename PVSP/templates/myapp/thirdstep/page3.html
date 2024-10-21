@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title></title>
+
+</head>
+
+
+<body
+ style="
+ position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color:#ADD8E6;
+        "
+>
+    {% if photo %}
+        <p>
+         <img src="{{ photo.image.url }}" alt="Photo" style="max-width: 400px;">
+        </p>
+        <form action="{% url 'delete_photo_third_step_page_three'  %}" method="post">
+            {% csrf_token %}
+            <button type="submit">حذف عکس</button>
+        </form>
+    {% else %}
+        <p>عکسی وجود ندارد.</p>
+        <form action="{% url 'restore_photo_third_step_page_three' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">بازگردانی عکس</button>
+        </form>
+    {% endif %}
+
+
+    {% if post %}
+
+
+                <b>
+                 <p>{{ post.subject }}{{ post.verb_simple_second_step }}</p>
+        </b>
+        <form action="{% url 'restore_post_third_step_page_three' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">حذف جمله </button>
+        </form>
+
+
+    {% else %}
+
+        <p>فعلی  وجود ندارد.</p>
+        <b>
+        <p>{{ post.subject }}{{ post.verb_simple_second_step }}</p>
+        </b>
+        <form action="{% url 'delete_post_third_step_page_three' %}" method="post">
+            {% csrf_token %}
+            <b>
+            <button type="submit">بازگردانی جمله  </button>
+            </b>
+        </form>
+    {% endif %}
+
+<br>
+    <hr>
+
+    برای تصویر ، یک جمله بنویس و سپس ،آن را بخوان
+    <br>
+<input type="text">
+{#    <br>#}
+{#    جمله را بخواند#}
+    <br>
+    <a href="{% url 'third_step_page_prefour' %}">
+        چند مثال ، نگاه کنیم
+    </a>
+
+</body>
+</html>

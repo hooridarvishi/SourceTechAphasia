@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+
+<body
+ style="
+ position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color:#ADD8E6;
+        "
+>
+    {% if photo %}
+        <p>
+         <img src="{{ photo.image.url }}" alt="Photo" style="max-width: 400px;">
+        </p>
+        <form action="{% url 'delete_photo_third_step_page_one'  %}" method="post">
+            {% csrf_token %}
+            <button type="submit">حذف عکس</button>
+        </form>
+    {% else %}
+        <b>  <p>عکسی وجود ندارد.</p></b>
+        <form action="{% url 'restore_photo_third_step_page_one' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">بازگردانی عکس</button>
+        </form>
+    {% endif %}
+
+<br>
+
+    {% if post %}
+        <b>
+        <p>{{ post.subject }}{{ post.verb_simple_second_step }}</p>
+        </b>
+        <form action="{% url 'delete_post_third_step_page_one' %}" method="post">
+            {% csrf_token %}
+            <b>
+            <button type="submit">حذف جمله  </button>
+            </b>
+        </form>
+    {% else %}
+        <b>
+        <p>فعلی  وجود ندارد.</p>
+        </b>
+        <form action="{% url 'restore_post_third_step_page_one' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">بازگردانی جمله </button>
+        </form>
+    {% endif %}
+
+<br>
+
+     فاعل ، کسی است که کاری را انجام می دهد  مثل
+    {{ post.subject }}
+
+    <br>
+    <br>
+    <br>
+    <b>
+    درمانگر جمله را بخواند
+    </b>
+<br>
+    <br>
+<a href="{% url 'third_step_page_two' %}">
+تمرین اول
+</a>
+
+
+</body>
+</html>

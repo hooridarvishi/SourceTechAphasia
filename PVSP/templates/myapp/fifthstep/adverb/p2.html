@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body
+ style="
+ position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color:#ADD8E6;
+        "
+
+>
+<b>
+    نقش های معنایی متناسب با جمله ی اصلی ، مشخص شود
+
+</b><br>
+{{ post_item.subject }} {{ post_item.pre_adverb }} {{ post_item.adverb }} {{ post_item.pre_position }} {{ post_item.text_mafool }} {{ post_item.verb_simple_second_step }}
+<br><hr><br>
+فاعل کیست ؟
+<br>
+{{ post_item.subject }}
+<br><br>
+<br><hr><br>
+مفعول کیست ؟
+<br>
+{{ post_item.text_mafool }}
+<br><br>
+<br><hr><br>
+ متمم چیست ؟
+<br>
+{{ post_item.pre_position }}
+<br><br>
+<br><hr><br>
+فعل چیست ؟
+<br>
+{{ post_item.verb_simple_second_step }}
+<br><br>
+قید مکانی چیست ؟
+<br>
+{{ post_item.pre_adverb }} + {{ post_item.adverb }}
+<br><br>
+
+<br>
+<b>
+<a href="{% url 'adverb_p_3' %}">
+    رفتن به قسمت بعدی
+</a>
+</b>
+</body>
+</html>

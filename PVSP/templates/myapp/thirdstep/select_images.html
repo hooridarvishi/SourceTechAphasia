@@ -1,0 +1,35 @@
+
+<!-- templates/select_images.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>انتخاب عکس</title>
+    <style>
+        .selectable-image {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>انتخاب عکس</h1>
+    <div id="image-container">
+        {% for image in images %}
+            <img src="{{ image.image.url }}" alt="Image" class="selectable-image" data-src="{{ image.image.url }}">
+        {% endfor %}
+    </div>
+
+    <script>
+        document.querySelectorAll('.selectable-image').forEach(image => {
+            image.addEventListener('click', function() {
+                const imageSrc = this.getAttribute('data-src');
+                window.opener.addImageToMain(imageSrc); // Call the function in the main window
+                window.close(); // Close the selection window
+            });
+        });
+    </script>
+</body>
+</html>

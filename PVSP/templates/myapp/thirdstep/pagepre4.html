@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #drop-area {
+            width: 300px;
+            height: 300px;
+            border: 2px dashed #ccc;
+            margin: 20px;
+            position: relative;
+        }
+
+        .draggable {
+            width: 100px;
+            height: 100px;
+            cursor: move;
+            position: absolute;
+        }
+
+        .selected-images {
+            width: 10px;
+            height: 10px;
+            margin: 5px;
+            border: 2px solid blue;
+            {#background-color: red;#}
+        }
+        img{
+            height: 40px;
+        }
+    </style>
+</head>
+<body
+        style="
+ position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color:#ADD8E6;
+        "
+>
+<br><br>
+{% if photo %}
+
+    <img src="{{ photo.image.url }}" style="max-width: 400px;">
+
+{% else %}
+    عکس نیست
+{% endif %}
+{#{{ photo }}#}
+{#{{ post.subject }}+{{post.verb_simple_second_step}}#}
+{#    <button id="select-images-btn">انتخاب عکس</button>#}
+{#    <div id="selected-images"></div>#}
+<br>
+<br>
+فاعل کیست ؟
+<br><br>
+<b>
+درمان گر ، در این مرحله ، جای خالی ها را با کمک بانک سوالات ، پر کند
+</b>
+
+<br><br>
+1. __ + {{ post.verb_simple_second_step }}
+<br>
+<br>
+فاعل کیست ؟
+    <button id="select-images-btn">انتخاب عکس</button>
+    <div id="selected-images"></div>
+<br><br><br>
+2. __ + {{ post.verb_simple_second_step }}
+<br><br>
+فاعل کیست ؟
+    <button id="select-images-btn1">انتخاب عکس</button>
+    <div id="selected-images1"></div>
+<br><br><br>
+3. __ + {{ post.verb_simple_second_step }}
+<br><br>
+فاعل کیست ؟
+    <button id="select-images-btn">انتخاب عکس</button>
+    <div id="selected-images"></div>
+<br><br>
+4. __ + {{ post.verb_simple_second_step }}
+<br><br>
+فاعل کیست ؟
+    <button id="select-images-btn">انتخاب عکس</button>
+    <div id="selected-images"></div>
+<br><br>
+5. __ + {{ post.verb_simple_second_step }}
+<br>
+فاعل کیست ؟
+    <button id="select-images-btn">انتخاب عکس</button>
+    <div id="selected-images"></div>
+<br><br>
+تمرین : از روی هر جمله بخوان
+<br><br>
+
+
+<br>
+<b>
+<a href="{% url 'third_step_page_four' %}">
+    تمرین بعدی را حل کن
+</a>
+</b>
+    <script>
+        document.getElementById('select-images-btn').onclick = function() {
+            window.open('/select/', '_blank', 'width=800,height=600');
+        };
+
+        function addImageToMain(imageSrc) {
+            const img = document.createElement('img');
+            img.src = imageSrc;
+            img.className = 'selected-image';
+            document.getElementById('selected-images').appendChild(img);
+        }
+
+        window.addImageToMain = addImageToMain; // Export the function to global scope
+    </script>
+    <script>
+        document.getElementById('select-images-btn1').onclick = function() {
+            window.open('/select/', '_blank', 'width=800,height=600');
+        };
+
+        function addImageToMain(imageSrc) {
+            const img = document.createElement('img');
+            img.src = imageSrc;
+            img.className = 'selected-image1';
+            document.getElementById('selected-images1').appendChild(img);
+        }
+
+        window.addImageToMain = addImageToMain; // Export the function to global scope
+    </script>
+</body>
+
+
+</html>

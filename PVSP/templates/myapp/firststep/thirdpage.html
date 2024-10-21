@@ -1,0 +1,72 @@
+{% load static %}
+
+<html lang="fa" dir="rtl" >
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body
+ style="
+ position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color:#ADD8E6;
+        "
+>
+{% if photo %}
+
+
+
+        <img src="{{ photo.image.url }}" alt="Photo" style="max-width: 400px;">
+        </p>
+        <form action="{% url 'delete_photo_third_page'  %}" method="post">
+            {% csrf_token %}
+            <button type="submit">حذف عکس</button>
+        </form>
+    {% else %}
+    <b>  <p>عکسی وجود ندارد.</p></b>
+        <form action="{% url 'restore_photo_third_page' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">بازگردانی عکس</button>
+        </form>
+    {% endif %}
+
+
+    {% if  post %}
+
+        <b>
+        <p>فعلی  وجود ندارد.</p>
+
+        </b>
+{#         {{ post.verb_simple_second_step }}#}
+        <form action="{% url 'restore_post_third_page' %}" method="post">
+
+            {% csrf_token %}
+            <button type="submit">بازگردانی فعل </button>
+        </form>
+    {% else %}
+        <b>
+        بوسیدن
+{# بپرسم #}
+       {{ post.content_verb  }}<br><br>
+        </b>
+        <form action="{% url 'delete_post_third_page' %}" method="post">
+
+            {% csrf_token %}
+{#                {{ post.verb_simple_second_step }}#}
+
+            <button type="submit">حذف فعل  </button>
+
+        </form>
+    {% endif %}<br>
+<b>
+چی کار می کنه ؟ فعل ، چیست ؟
+    </b>
+
+ <br><br>
+<b>
+<a href="{% url 'forth_page' %}">تمرین سوم</a>
+    </b>
+</body>
+</html>

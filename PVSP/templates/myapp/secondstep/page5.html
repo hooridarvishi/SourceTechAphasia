@@ -1,0 +1,79 @@
+{% load static %}
+
+<html lang="fa" dir="rtl" >
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body
+ style="
+ position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color:#ADD8E6;
+        "
+>
+{% if photo %}
+
+
+
+        <img src="{{ photo.image.url }}" alt="Photo" style="max-width: 400px;">
+        </p>
+        <form action="{% url 'delete_photo_second_step_page_fifth'  %}" method="post">
+            {% csrf_token %}
+            <button type="submit">حذف عکس</button>
+        </form>
+    {% else %}
+    <b>
+        <p>عکسی وجود ندارد</p>
+    </b>
+        <form action="{% url 'delete_photo_second_step_page_fifth' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">بازگردانی عکس</button>
+        </form>
+    {% endif %}
+
+<br><br>
+{% if post %}
+
+{#        **#}
+
+                <b>
+        <p>فعلی  وجود ندارد.</p>
+
+        </b>
+        <form action="{% url 'restore_post_second_step_page_fifth' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">بازگردانی فعل </button>
+        </form>
+    {% else %}
+{#        #}
+                        <b>
+        <p>{{ post.content_verb }}</p>
+        </b>
+        <form action="{% url 'delete_post_second_step_page_fifth' %}" method="post">
+            {% csrf_token %}
+            <b>
+            <button type="submit">حذف فعل  </button>
+            </b>
+        </form>
+    {% endif %}
+
+<b>
+کاری که در تصویر انجام می شود را بنویس
+(فعل جمله را بنوبس)
+    </b>
+ <br>
+</b>
+<input type="text">
+<br>
+<b>
+
+<a href="{% url 'third_step_page_one' %}">
+    (آموزش نقش فاعل)مرحله سوم
+</a>
+
+</b>
+</body>
+</html>

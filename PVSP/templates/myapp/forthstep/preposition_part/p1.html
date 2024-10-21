@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body
+ style="
+ position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color:#ADD8E6;
+        "
+
+>
+<img src="{{ photo.image.url }}" alt="Photo" style="max-width: 400px;">
+<br>
+<b>
+ لطفا با کلمات زیر جمله مناسب با تصویر بسازید سپس ، جمله را بخوانید
+    </b>
+<br>
+    {{ post_item.text_mafool }} ،
+    {{ post_item.verb_simple_second_step }}،
+{{ post_item.subject }}
+<br>
+<hr>
+<b>
+مادر ، فرزند را در کجا می بوسد ؟
+    </b>
+<br>
+{{ post_item.pre_position }}
+<br>
+<hr>
+<b>
+<a href="{% url 'preposition_p_2' %}">
+    تمرین بعدی
+</a>
+    </b>
+</body>
+</html>

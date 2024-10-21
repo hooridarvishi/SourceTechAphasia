@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body
+        style="
+ position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color:#ADD8E6;
+  "  >
+
+    {% if photo %}
+        <p>
+         <img src="{{ photo.image.url }}" alt="Photo" style="max-width: 400px;">
+        </p>
+        <form action="{% url 'delete_photo_second_step_page_third'  %}" method="post">
+            {% csrf_token %}
+            <button type="submit">حذف عکس</button>
+        </form>
+    {% else %}
+        <b> <p>عکسی وجود ندارد</p></b>
+        <form action="{% url 'restore_photo_second_step_page_third' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">بازگردانی عکس</button>
+        </form>
+    {% endif %}
+
+<br><br>
+    <b>
+
+
+        فعل جمله را بخوان
+        </b>
+<br><br>
+ می بوسد + -- --
+
+<br><br>
+<b>
+<a href="{% url 'second_step_page_forth' %}">
+    بریم تمرین سوم
+</a>
+</b>
+</body>
+</html>

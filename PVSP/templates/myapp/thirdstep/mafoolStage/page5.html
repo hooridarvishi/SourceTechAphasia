@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body
+
+ style="
+ position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color:#ADD8E6;
+        "
+>
+    {% if photo %}
+        <p>
+         <img src="{{ photo.image.url }}" alt="Photo" style="max-width: 400px;">
+        </p>
+{#        <form action="{% url 'delete_photo_third_step_page_second_mafool'  %}" method="post">#}
+{#            {% csrf_token %}#}
+{#            <button type="submit">حذف عکس</button>#}
+{#        </form>#}
+{#    {% else %}#}
+{#        <p>عکسی وجود ندارد.</p>#}
+{#        <form action="{% url 'restore_photo_third_step_page_second_mafool' %}" method="post">#}
+{#            {% csrf_token %}#}
+{#            <button type="submit">بازگردانی عکس</button>#}
+        </form>
+    {% endif %}
+<br>
+    <b>
+    از روی جمله بخوان
+        </b>
+    <br>
+<br>
+    {{ post.subject }} {{ post.text_mafool }} {{ post.verb_simple_second_step }}
+    <br>
+<br>
+
+<div>
+    <a href="{% url 'mafool_sixth_page' %}">
+        <b>
+            ارایه مثال های معنایی بیشتر
+        </b>
+    </a>
+</div>
+</body>
+</html>

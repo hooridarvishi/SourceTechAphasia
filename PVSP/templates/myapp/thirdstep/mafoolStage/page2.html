@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" >
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+           <style>
+           #drop-area {
+               width: 30px;
+               height: 50px;
+               border: 2px dashed #ccc;
+               display: inline;
+               align-items: center;
+               justify-content: center;
+           }
+           .draggable {
+               padding: 10px;
+               {#background-color :pink;#}
+               color: red;
+               cursor: grab;
+           }
+       </style>
+
+</head>
+<body
+ style="
+ position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color:#ADD8E6;
+        "
+>
+    {% if photo %}
+        <p>
+         <img src="{{ photo.image.url }}" alt="Photo" style="max-width: 400px;">
+        </p>
+        <form action="{% url 'delete_photo_third_step_page_second_mafool'  %}" method="post">
+            {% csrf_token %}
+            <button type="submit">حذف عکس</button>
+        </form>
+    {% else %}
+        <p>
+            <b>عکسی وجود ندارد
+            </b>
+          </p>
+        <form action="{% url 'restore_photo_third_step_page_second_mafool' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">بازگردانی عکس</button>
+        </form>
+    {% endif %}
+
+
+    {% if post %}
+        <b>
+        <p>جمله ای  وجود ندارد.</p>
+        </b>
+        <form action="{% url 'restore_post_third_step_page_second_mafool' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">بازگردانی جمله </button>
+        </form>
+    {% else %}
+
+
+
+                <b>
+        <p> {{ post.subject }} {{ post.text_mafool }} {{ post.verb_simple_second_step }}</p>
+                مادر ، کودک را می بوسد
+        </b>
+        <form action="{% url 'delete_post_third_step_page_second_mafool' %}" method="post">
+            {% csrf_token %}
+
+            <b>
+            <button type="submit">حذف جمله  </button>
+            </b>
+        </form>
+
+    {% endif %}
+    <br>
+    <b>
+    تمرین اول :
+    <br>
+    <br>
+
+جایگاه مفعول را مشخص کن
+         </b>
+<br>
+<br>
+ <div class="draggable" draggable="true" id="draggable-item">
+     {{ post.text_mafool }}
+     کودک را
+ </div>
+    <div id="drop-area" >
+    ___+___ +می بوسد
+
+{#           اینجا رها کنید#}
+<br>
+ </div>
+{#    اخر دراگ دراپ#}
+<br>
+    <b>
+        تمرین دوم :
+    درمانگر جمله را بخواند
+    </b>
+<hr>
+<br>
+
+<div>
+    <a href="{% url 'mafool_third_page' %}">
+        <b>
+         تمرین بعدی
+        </b>
+    </a>
+</div>
+ <script>
+           const draggableItem = document.getElementById('draggable-item');
+           const dropArea = document.getElementById('drop-area');
+
+           draggableItem.addEventListener('dragstart', (event) => {
+               event.dataTransfer.setData('text/plain', event.target.id);
+           });
+
+           dropArea.addEventListener('dragover', (event) => {
+               event.preventDefault();
+           });
+
+           dropArea.addEventListener('drop', (event) => {
+               event.preventDefault();
+               const data = event.dataTransfer.getData('text/plain');
+               const droppedItem = document.getElementById(data);
+               dropArea.appendChild(droppedItem);
+           });
+       </script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" >
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body
+ style="
+ position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color:#ADD8E6;
+        "
+>
+    {% if photo %}
+        <p>
+         <img src="{{ photo.image.url }}" alt="Photo" style="max-width: 400px;">
+        </p>
+        <form action="{% url 'delete_photo_second_page'  %}" method="post">
+            {% csrf_token %}
+            <button type="submit">حذف عکس</button>
+        </form>
+    {% else %}
+        <b>
+        <p>عکسی وجود ندارد.</p>
+        </b><br>
+        <form action="{% url 'restore_photo_second_page' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">بازگردانی عکس</button>
+        </form>
+    {% endif %}
+
+<br>
+    {% if  post %}
+
+
+            <b>
+        <p>{{ post.content_verb }}</p>
+        </b>
+        <form action="{% url 'restore_post_second_page' %}" method="post">
+            {% csrf_token %}
+            <b>
+            <button type="submit">  حذف فعل</button>
+            </b>
+        </form>
+    {% else %}
+
+
+                        <b>
+        <b>فعلی  وجود ندارد.</b>
+
+        </b><br><br>
+        <form action="{% url 'delete_post_second_page' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">بازگردانی فعل </button>
+        </form>
+    {% endif %}
+
+
+
+{#**********************#}
+<br>
+    <b>
+        فعل را بخوان یا آن چه من میگویم را تکرار کن
+    </b>
+<hr>
+<br>
+
+<div>
+    <a href="{% url 'third_page' %}">
+        <b>
+         تمرین دوم
+        </b>
+    </a>
+</div>
+</body>
+</html>
+
+{#<html lang="fa" dir="rtl" >#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title></title>#}
+{#</head>#}
+{#<body#}
+{# style="#}
+{# position: absolute;#}
+{#top: 50%;#}
+{#left: 50%;#}
+{#transform: translate(-50%, -50%);#}
+{#background-color:#ADD8E6;#}
+{#        "#}
+{#>#}
+{##}
+{##}
+{#<b>#}
+{##}
+{#فعل را بخوان ، آن چه می گویم را تکرار کن#}
+{#</b>#}
+{#    {% if photo %}#}
+{#        <p>#}
+{##}
+{#         <img src="{{ photo.image.url }}" alt="Photo" style="max-width: 400px;">#}
+{#        </p>#}
+{#        <form action="{% url 'delete_photo'  %}" method="post">#}
+{#            {% csrf_token %}#}
+{#            <button type="submit">حذف عکس#}
+{#            </button>#}
+{#        </form>#}
+{#    {% else %}#}
+{#        <p>#}
+{#            <b>#}
+{#                عکسی وجود ندارد#}
+{#            </b>#}
+{#            </p>#}
+{#        <form action="{% url 'restore_photo' %}" method="post">#}
+{#            {% csrf_token %}#}
+{#            <button type="submit">بازگردانی عکس</button>#}
+{#        </form>#}
+{#    {% endif %}#}
+{##}
+{#    {% if post %}#}
+{#        <b>{{ post.content_verb }}</b>#}
+{#        <form action="{% url 'delete_post' %}" method="post">#}
+{#            {% csrf_token %}#}
+{#            <button type="submit">حذف نوشته</button>#}
+{#        </form>#}
+{#    {% else %}#}
+{#        <p>نوشته‌ای وجود ندارد.</p>#}
+{#        <form action="{% url 'restore_post' %}" method="post">#}
+{#            {% csrf_token %}#}
+{#            <button type="submit">بازگردانی نوشته</button>#}
+{#        </form>#}
+{#    {% endif %}#}
+{##}
+{##}
+{#<br>#}
+{##}
+{##}
+{#<div>#}
+{#    <a href="{% url 'third_page' %}">#}
+{#        <b>#}
+{#       بریم تمرین دوم#}
+{#        </b>#}
+{#    </a>#}
+{#</div>#}
+{##}
+{#</body>#}
+{#</html>#}

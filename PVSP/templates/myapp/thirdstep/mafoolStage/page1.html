@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body
+        style="
+ position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color:#ADD8E6;
+        "
+>
+{#<button id="fetch-data">Fetch Data</button>#}
+<div>
+
+<p>
+    <b>
+     نفش های اجباری برای جمله ای که مفعول دارد :
+        </b>
+   </p><br>
+    فاعل +مفعول +فعل
+
+</div>
+<br>
+{#<script>#}
+{#    $(document).ready(function () {#}
+{#        $('#fetch-data').click(function () {#}
+{#            $.ajax({#}
+{#                url: '{% url "mafool_first_page" %}',#}
+{#                method: 'GET',#}
+{#                success: function (response) {#}
+{#                    $('#result').text(response.data);#}
+{#                }#}
+{#            });#}
+{#        });#}
+{#    });#}
+{#</script>#}
+
+
+{#    {% if display_text %}#}
+{#        <p>{{ display_text }}</p>#}
+{#    {% else %}#}
+{#        <p>متنی برای نمایش وجود ندارد.</p>#}
+{#    {% endif %}#}
+{##}
+{#    <form method="post">#}
+{#        {% csrf_token %}#}
+{#        <button type="submit">متن بعدی</button>#}
+{#    </form>#}
+<b>
+<a href="{% url 'mafool_second_page' %}">
+    تمرین اول
+</a>
+    </b>
+{#    {% if post_item%}#}
+{#        <b>#}
+{#        <p>فاعلی  وجود ندارد.</p>#}
+{#        </b>#}
+{#        <form action="{% url 'restore_mafool_one' %}" method="post">#}
+{#            {% csrf_token %}#}
+{#            <button type="submit">بازگردانی فاعل </button>#}
+{#        <p>#}
+{#        </p>#}
+{#        </form>#}
+{#    {% else %}#}
+{##}
+{##}
+{#                <b>#}
+{#            مادر#}
+{#        <p>{{ post_item.subject }}#}
+{##}
+{#        </p>#}
+{#        </b>#}
+{#        <form action="{% url 'delete_mafool_one' %}" method="post">#}
+{#            {% csrf_token %}#}
+{#            <b>#}
+{#            <button name="del_mafool" type="submit">حذف فاعل  </button>#}
+{#            </b>#}
+{#        </form>#}
+{#    {% endif %}#}
+
+
+</body>

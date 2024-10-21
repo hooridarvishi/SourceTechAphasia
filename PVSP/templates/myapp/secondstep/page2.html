@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title></title>
+       <style>
+           #drop-area {
+               width: 170px;
+               height: 30px;
+               border: 2px dashed #ccc;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+           }
+           .draggable {
+               padding: 10px;
+               {#background-color: #007bff;#}
+               color: darkgreen;
+               cursor: grab;
+           }
+       </style>
+
+
+</head>
+<body
+        style="
+ position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color:#ADD8E6;
+        "
+>
+<b>
+(فعل را در جایگاه مناسب قرار دهید)جایگاه فعل کجاست؟
+</b>
+<br><br><br>
+ <div class="draggable" draggable="true" id="draggable-item">
+     <b>   {{ post.verb_simple_second_step }} </b>
+ </div><br>
+       <div id="drop-area">
+{#           اینجا رها کنید#}
+            __ __ + __
+       </div>
+<b><br>
+<a href="{% url 'second_step_page_third' %}">
+    بریم تمرین دوم
+</a></b>
+       <script>
+           const draggableItem = document.getElementById('draggable-item');
+           const dropArea = document.getElementById('drop-area');
+
+           draggableItem.addEventListener('dragstart', (event) => {
+               event.dataTransfer.setData('text/plain', event.target.id);
+           });
+
+           dropArea.addEventListener('dragover', (event) => {
+               event.preventDefault();
+           });
+
+           dropArea.addEventListener('drop', (event) => {
+               event.preventDefault();
+               const data = event.dataTransfer.getData('text/plain');
+               const droppedItem = document.getElementById(data);
+               dropArea.appendChild(droppedItem);
+           });
+       </script>
+
+</body>
+</html>
